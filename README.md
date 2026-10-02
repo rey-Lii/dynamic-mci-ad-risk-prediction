@@ -2,7 +2,9 @@
 
 [![Tests](https://github.com/rey-Lii/dynamic-mci-ad-risk-prediction/actions/workflows/tests.yml/badge.svg)](https://github.com/rey-Lii/dynamic-mci-ad-risk-prediction/actions/workflows/tests.yml)
 
-**A history-adaptive framework for dynamic MCI-to-AD risk prediction from routine clinical assessments, developed on ADNI and externally evaluated on NACC. The framework uses demographic, cognitive, and functional assessments without requiring PET, CSF biomarkers, MRI, or genetic testing, making it suitable for primary-care, community, and resource-constrained settings.**
+**A history-adaptive framework for dynamic MCI-to-AD risk prediction from routine clinical assessments, developed on ADNI and externally validated on NACC.**
+
+The framework uses demographic, cognitive, and functional assessments without requiring PET, CSF biomarkers, MRI, or genetic testing, making it suitable for primary-care, community, and resource-constrained settings.
 
 [Open the model-backed research demo](https://huggingface.co/spaces/reylii/MCI-to-Alzheimers-Dementia-Risk-Assessment)
 
