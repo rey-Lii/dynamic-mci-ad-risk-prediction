@@ -66,7 +66,7 @@ The framework represents five cognitive and functional assessment domains:
 
 Each domain retains its own irregular longitudinal sequence rather than being aligned to a common visit grid.
 
-A shared temporal encoder is applied independently to each domain-specific history. Each module representation combines longitudinal context with the latest observed measurement, after which available modules are integrated with demographic information through **masked cross-domain attention**.
+A shared temporal encoder is applied independently to each domain-specific history. Each module representation combines longitudinal context with the latest observed measurement, after which available modules are integrated with demographic information through **masked cross-domain fusion**.
 
 ### Partial assessment availability
 
@@ -74,7 +74,7 @@ The framework does not require all assessment domains to be present.
 
 Unavailable domains are excluded from model fusion rather than reconstructed as synthetic measurements. During training, entire assessment domains are additionally masked to expose the model to reduced-input settings.
 
-This supports prediction from partially available inputs; it does **not** model or correct the underlying clinical missingness mechanism.
+This supports prediction when some assessment domains are unavailable, without requiring their reconstruction or imputation.
 
 ### Discrete-time survival output
 
@@ -84,9 +84,9 @@ Both branches estimate conditional hazards over four intervals:
 
 Cumulative risk through interval \(m\) is
 
-\[
-R_m = 1-\prod_{k\le m}(1-h_k),
-\]
+$$
+R_m = 1-\prod_{k\le m}(1-h_k)
+$$
 
 yielding 1-, 2-, 3-, and 5-year risks of progression to AD dementia at each prediction landmark.
 
@@ -100,7 +100,7 @@ Development performance is estimated using **patient-grouped fivefold out-of-fol
 
 Landmark contributions are participant-balanced so that individuals with denser follow-up do not dominate evaluation through repeated observations.
 
-Performance is assessed using censoring-adjusted horizon-specific AUROC, AUPRC, and Brier scores, together with calibration analyses and patient-level bootstrap uncertainty estimates.
+Performance is assessed using IPCW-based horizon-specific AUROC, AUPRC, and Brier scores, together with calibration analyses and patient-level bootstrap uncertainty estimates.
 
 ### Frozen external validation in NACC
 
@@ -133,15 +133,7 @@ Because NACC outcomes were used to estimate recalibration parameters, these resu
 
 This repository provides the public implementation of the **data representation, history-adaptive routing, model architecture, and survival-risk calculation** used in the final framework.
 
-Synthetic examples and automated tests are included for code inspection and workflow validation.
-
----
-
-## Research demo
-
-[Launch the model-backed research demo](https://huggingface.co/spaces/reylii/MCI-to-Alzheimers-Dementia-Risk-Assessment).
-
-The demo illustrates demographic and longitudinal assessment input, history-adaptive routing, and multi-horizon risk output.
+Synthetic examples and automated tests are included.
 
 ---
 
